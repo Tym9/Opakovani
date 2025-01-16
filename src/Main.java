@@ -14,6 +14,16 @@ public class Main {
         evidence.pridejZakaznika(zakaznik);
         evidence.pridejZakaznika(zakaznik2);
 
+        List<Zakaznik> aktivniZakaznici = evidence.filtrovatPodleProdeju(20);
+        System.out.println("Zákazníci s více než 20 prodeji:");
+        for (Zakaznik z : aktivniZakaznici) {
+            System.out.println(z);
+        }
+
+        double prumer = evidence.prumernyPocetProdeju("Uherské Hradiště");
+        System.out.println("Průměrný počet prodejů v Uherském Hradišti: " + prumer);
+
+
 
     }
 
@@ -36,7 +46,7 @@ public class Main {
     }
 
     public static void nactiZakaznikyZeSouboru(EvidenceZakazniku evidence, String soubor) {
-        evidence = new EvidenceZakazniku();;
+        evidence = new EvidenceZakazniku();
         String text = "src/text.txt";
         try (BufferedReader reader = new BufferedReader(new FileReader(text))) {
             String radek = reader.readLine();
@@ -57,4 +67,6 @@ public class Main {
         }
 
     }
+
+
 }
